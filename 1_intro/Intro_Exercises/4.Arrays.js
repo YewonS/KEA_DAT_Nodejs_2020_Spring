@@ -55,3 +55,72 @@ console.log(diet);
 // Don't remove by index. You know in advance that it's the last in the array because you are too full already.
 diet.pop();
 console.log(diet);
+
+
+
+// --------------------------------------
+// Exercise 6 - Copy array
+
+// You really like your daily diet from last exercise. Copy it to a new array called dinnerTray so you can give it to a friend.  
+
+//var dinnerTray = diet => this way, dinnertray keeps track of diet, so if you change diet, dinnerTray will chnage as well. same memory
+// var dinnerTray = [];
+// dinnerTray.push(diet);
+
+var dinnerTray = diet.slice();
+console.log(dinnerTray);
+
+
+//Spread Operator
+var spreadDinner = [...diet];
+console.log('spread', spreadDinner);
+// => took each element
+var cocaine = {weight:10};
+var moreCocaine = {...cocaine, color:"white"};
+console.log(moreCocaine);
+
+
+// --------------------------------------
+
+//  array.slice(start, end)  // start and end are optional
+
+// --------------------------------------
+// Exercise 7 - For loop
+
+var letters = ["a","b","c", "d", "e", "f", "g", "h"];
+
+// log every second char in the array starting from b
+
+for(var i = 1; i < letters.length; i += 2) {
+
+        console.log(letters[i]);
+}
+
+// --------------------------------------
+// Exercise 8 - For loop and if statement
+
+var numbers  = [5, 3, 2, 7, 11, 12, 0, -20, 6];
+
+var discardedNumbers = [];
+
+// log the element if the number is above 6 or below 0
+// else push them to the array discardedNumbers
+
+for(j=0; j<numbers.length; j++){
+
+    if(numbers[j] > 6 || numbers[j] < 0) {
+        console.log(numbers[j]);
+    } else {
+        discardedNumbers.push(numbers[j]);
+    }
+}
+
+//other solutions
+for(n of numbers) {
+    if (n > 6 || n < 0) console.log(n);
+    else discardedNumbers.push(n);  //=> you can either write in a single line or use brackets
+}
+
+console.log('discardedNumbers', discardedNumbers);
+
+// --------------------------------------

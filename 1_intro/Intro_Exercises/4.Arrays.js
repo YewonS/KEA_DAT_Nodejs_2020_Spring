@@ -30,7 +30,8 @@ var significantMathNumbers = [0, 2.718, 3.14159, 1729]
 // You want to programmatically find where the number 1729 is in the array.
 // programmatically means that no finger counting allowed. There is a method for this (finding index based of value). 
 
-console.log(significantMathNumbers.indexOf(1729));
+var theNumber = significantMathNumbers.indexOf(1729);
+console.log(theNumber);
 
 // --------------------------------------
 // Exercise 4 - Inserting elements

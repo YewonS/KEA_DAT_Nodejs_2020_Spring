@@ -33,3 +33,27 @@ var result5 = ((one + two + three) / 3).toFixed(5);
 console.log(result5);
 // --------------------------------------
 
+// --------------------------------------
+// Exercise 6 - Get the character by index
+
+var letters = "abc";
+// Get me the character "c"
+
+console.log(letters.substring(2));
+
+// other solutions
+// console.log(letter[2]);
+// console.log(letter.charAt(2));
+
+// --------------------------------------
+// Exercise 7 - Replace
+
+var fact = "You are learning javascript!";
+
+// capitalize the J in Javascript
+
+console.log(fact.replace("j", "J"));
+
+//other solutions
+//console.log(fact.indexOf("j")); and then split before, add J, and add the rest
+// --------------------------------------

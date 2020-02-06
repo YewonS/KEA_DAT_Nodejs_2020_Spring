@@ -13,13 +13,17 @@ console.log(letters[1]);
 var friends = [];
 
 // What a lonely array. Add at least 3 friend objects to it.  
-var newFriends = {
-    "friend1" : "Amalia",
-    "friend2" : "Maria",
-    "friend3" : "Anna"
+var newFriends1 = {
+    "name" : "Amalia" 
+}
+var newFriends2 = {
+    "name" : "Maria"
+}
+var newFriends3 = {
+    "name" : "Anna"
 }
 
-friends.push(newFriends);
+friends.push(newFriends1, newFriends2, newFriends3);
 console.log(friends);
 
 // --------------------------------------
@@ -39,7 +43,7 @@ console.log(theNumber);
 var diet = ["tomato", "cucumber", "rocolla", "kale"];
 
 // You are a programmer. In one line (one statement) insert hamburger, soda and pizza between the elements rocolla and kale
-diet.splice(3, 0, "hamberger", "soda", "pizza");
+diet.splice(3, 0, "hamburger", "soda", "pizza");
 console.log(diet);
 // --------------------------------------
 

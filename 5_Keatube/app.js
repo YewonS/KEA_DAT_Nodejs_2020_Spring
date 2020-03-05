@@ -9,8 +9,11 @@ app.use(express.static('videos'))
 
 
 app.get("/video/:videoid", (req, res) => {
-
-    return res.sendFile(__dirname + "/public/video.html")
+    if(req.params.videoid === '1') {
+        return res.sendFile(__dirname + "/public/video.html")
+    } else {
+        return res.sendFile(__dirname + "/public/video2.html")
+    }
 })
 
 

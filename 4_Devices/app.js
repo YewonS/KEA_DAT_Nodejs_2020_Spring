@@ -46,7 +46,6 @@ app.get("/devices/:id", (req, res) => {
 // })
 
 app.post("/testtwo", (req, res) => {
-    //console.log({ "body": req.body})
     return res.send({ response: req.body })
 })
 

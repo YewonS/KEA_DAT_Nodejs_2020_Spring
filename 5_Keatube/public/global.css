@@ -6,3 +6,11 @@
     border-radius: 8px;
     width: 100px;
 }
+
+#main-content {
+    min-height: calc(100vh - 80px);
+}
+
+footer {
+    height: 20px;
+}

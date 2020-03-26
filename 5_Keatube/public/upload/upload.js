@@ -1,4 +1,3 @@
-function validateForm(event) {
-    event.preventDefault()
-    return false
+function validateForm() {
+    return true
 }

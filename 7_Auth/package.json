@@ -1,0 +1,20 @@
+{
+  "name": "7_auth",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "migrate:make": "knex migrate:make ",
+    "migrate:latest": "knex migrate:latest",
+    "migrate:rollback": "knex migrate:rollback",
+    "seed:make": "knex seed:make",
+    "seed:run": "knex seed:run",
+    "test": "echo \"error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "knex": "^0.21.0",
+    "mysql": "^2.18.1"
+  }
+}

@@ -1,30 +1,29 @@
 
 exports.up = function(knex) {
+  
   return knex.schema
-    .createTable('users', table => {
-        table.increments('id')
-        table.string('username').unique().notNullable()
-        table.string('password').notNullable()
-        table.dateTime('updated_at').defaultTo(knex.raw('NULL ON UPDATE CURRENT_TIMESTAMP'))
-        table.timestamp('created_at').defaultTo(knex.fn.now()) //fn -> function
-    })
-    .createTable('electives', table => {
-        table.increments('id')
-        table.string('course_name').notNullable()
+        .createTable('roles', (table) => {
+            table.increments('id').notNullable();
+            table.string('role').unique().notNullable();
+        })
+        .createTable('users', (table) => {
+            table.increments('id').notNullable();
+            table.string('username').unique().notNullable();
+            table.string('password').notNullable();
+            table.integer('age');
 
-        //foreign key -> user id
-        table.integer('user_id').unsigned().notNullable()
-        table.foreign('user_id').references('users.id')
+            // foreign key
+            table.integer('role_id').unsigned().notNullable();
+            table.foreign('role_id').references('roles.id');
 
-        table.dateTime('updated_at').defaultTo(knex.raw('NULL ON UPDATE CURRENT_TIMESTAMP'))
-        table.timestamp('created_at').defaultTo(knex.fn.now())
-    })
+            table.dateTime('updated_at').defaultTo(knex.raw('NULL ON UPDATE CURRENT_TIMESTAMP'));
+            table.dateTime('created_at').notNullable().defaultTo(knex.raw('CURRENT_TIMESTAMP'));
+        });
 };
 
-
 exports.down = function(knex) {
-  //rollback
-  return knex.schema
-    .dropTableIfExists('electives')
-    .dropTableIfExists('users')
+  // rollback
+    return knex.schema
+        .dropTableIfExists('users')
+        .dropTableIfExists('roles');
 };

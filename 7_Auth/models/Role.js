@@ -1,10 +1,13 @@
 const { Model } = require('objection')
 
+const User = require('./User.js')
+
 class Role extends Model {
     static tableName = 'roles'
     
+    // bi-directional relation
     static relationMappings = {
-        owner: {
+        users: {
             relation: Model.HasManyRelation,
             modelClass: User,
             join: {

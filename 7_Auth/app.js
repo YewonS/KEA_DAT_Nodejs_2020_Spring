@@ -1,8 +1,16 @@
 const express = require('express')
 const app = express()
 
-
 app.use(express.json())
+
+const rateLimit = require("express-rate-limit")
+const apiLimiter = rateLimit({
+    windowMs: 15 * 60 * 1000,
+    max: 8
+}) // creates headers and counts
+app.use("/login", apiLimiter)
+app.use("/signup", apiLimiter)
+
 
 /* async practice
 app.get("/", (req, res) => {
@@ -36,7 +44,10 @@ Model.knex(knex) // entity that aware of the connection
 /* Add Route */
 
 const authRoute = require('./routes/authRoute.js')
+const usersRoute = require('./routes/users.js') // REST API for user model
+
 app.use(authRoute)
+app.use(usersRoute)
 
 
 

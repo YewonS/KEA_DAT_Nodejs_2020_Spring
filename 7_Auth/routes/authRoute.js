@@ -1,6 +1,11 @@
 const router = require("express").Router()
 const User = require('../models/User.js')
 
+const bcrypt = require('bcryptjs')
+
+const saltRounds = 12
+
+
 // const { Router as baboo } = require("express")
 // const Router = baboo()
 
@@ -21,12 +26,18 @@ router.post('/signup', async (req, res) => {
                 // do if else check if it exists and give response
                 if (usersFound.length > 1) {
                     return res.status(400).send({ response: "User already exists." })
+                
                 } else {
-                    const defaultRoleId = await Role.query().select('id').where({ 'role': 'USER' })
+
+                    const defaultRoles = await Role.query().select().where({ role: 'USER' }).then(roles => {
+
+                    const hashedPassword = bcrypt.hash(password, saltRounds)
+
+                    })
                     const createdUser = await User.query().insert({
                         username,
-                        password,
-                        roldId: defaultRoleId
+                        password: hashedPassword,
+                        roldId: defaultRoles[0].id
                     })
                     // insert in db
                     return res.send({ response: `User has been created ${createdUser.username}` })
@@ -45,7 +56,17 @@ router.post('/signup', async (req, res) => {
 })
 
 router.post('/login', (req, res) => {
-    return res.send({ response: req.body })
+
+    // 1. retrieve the login details and validate
+    // 2. check for a user match in db
+    // 3. bcrypt compare
+    // 4. sessions
+
+    bcrypt.compare("plaintextPassword", "hashed").then((result)=> {
+        console.log(result)
+    })
+
+    return res.send({ response: "Ok" })
 })
 
 router.get('/logout', (req, res) => {

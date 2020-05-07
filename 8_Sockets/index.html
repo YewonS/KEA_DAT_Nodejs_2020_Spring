@@ -12,6 +12,9 @@
     <input id="thoughts" placeholder="write what's on your mind"/>
     <button id="btn-submit" onclick="onThoughtSubmitted()">Post</button>
 
+    <div id="messages">
+    </div>
+    
     <script>
         const socket = io.connect("localhost:3000");
 
@@ -20,6 +23,10 @@
             $('#thoughts').val('');
             socket.emit("I'm thinking about this", { thoughts });
         }
+
+        socket.on("Someone said,", data => {
+            $('#messages').prepend(`<div>${data.thoughts}</div>`);
+        });
 
         // $('#btn-submit').click(() => {
         //     console.log($('#thoughts').val());
